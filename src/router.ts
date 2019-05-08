@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router, { Route } from "vue-router";
-import Home from "./views/Home.vue";
+import Layout from "./components/Layout/index.vue";
 
 Vue.use(Router);
 
@@ -10,17 +10,44 @@ const router: Router = new Router({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: Home
+      redirect: "/login"
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      name: "404",
+      path: "/404",
+      component: () => import("@/views/404/index.vue")
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: () => import("./views/login/index.vue")
+    },
+    {
+      path: "/welcome",
+      name: "welcome",
+      component: () => import("./views/welcome/index.vue")
+    },
+    {
+      path: "/checkin",
+      name: "checkin",
+      component: Layout,
+      redirect: "/checkin/test",
+      children: [
+        {
+          path: "/checkin/test",
+          name: "checkinTest",
+          component: () => import("./views/Home.vue")
+        },
+        {
+          path: "/checkin/admission-info",
+          name: "admission-info",
+          component: () => import("./views/admission-info/index.vue")
+        }
+      ]
+    },
+    {
+      path: "*", // 此处需特别注意至于最底部
+      redirect: "/404"
     }
   ]
 });
@@ -30,7 +57,10 @@ const whiteList: string[] = ["login", "signup", "home", "about"];
 const isLogin: boolean = false;
 router.beforeEach((to: Route, form: Route, next: Function) => {
   // 不在白名单内，没有登陆
-  if (whiteList.indexOf(to.name as string) === -1 && !isLogin) {
+  // if (whiteList.indexOf(to.name as string) === -1 && !isLogin) {
+  //   next("/login");
+  // }
+  if (!localStorage.getItem("token") && to.path !== "/login") {
     next("/login");
   }
   next();
