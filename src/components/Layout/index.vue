@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <van-nav-bar title="报道须知"
+    <van-nav-bar :title="title"
       right-text="首页"
       @click-right="back"
       @click-left="showBars=true"
@@ -43,7 +43,10 @@
         :active="activeSteps">
         <van-step>报道须知</van-step>
         <van-step>入学教育</van-step>
-        <van-step>录取信息</van-step>
+        <van-step>
+          <van-button type="default"
+            size="mini">录取信息</van-button>
+        </van-step>
         <van-step>上传照片</van-step>
         <van-step>个人信息</van-step>
         <van-step>宿舍信息</van-step>
@@ -62,8 +65,15 @@ import { Component, Vue } from "vue-property-decorator";
 @Component({})
 export default class Layout extends Vue {
   showBars = true;
+  title = "";
   activeSteps = 0;
-  routerList = ["", "", "", "", "", "", "", "", "", "", "", ""];
+  routerList = [
+    { path: "/checkin/admission-info", title: "录取信息" },
+    { path: "/checkin/admission-info", title: "录取信息" },
+    { path: "/checkin/admission-info", title: "录取信息" },
+    { path: "/checkin/admission-info", title: "录取信息" },
+    { path: "/checkin/admission-info", title: "录取信息" }
+  ];
   mounted() {
     setTimeout(() => {
       this.showBars = false;
@@ -74,6 +84,7 @@ export default class Layout extends Vue {
   }
   nextStep() {
     this.activeSteps++;
+    this.$router.push(this.routerList[this.activeSteps].path);
   }
   lastStep() {
     this.activeSteps--;

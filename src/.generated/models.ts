@@ -58,6 +58,23 @@ export interface RestfulData {
 /*
  * @namespace models
  */
+export interface UserInfo {
+  /**
+   *
+   *
+   * @serverType array
+   */
+  roles: string[];
+  /**
+   *
+   *
+   * @serverType string
+   */
+  name: string;
+}
+/*
+ * @namespace models
+ */
 export interface Bed {
   /**
    *  int32
@@ -189,17 +206,17 @@ export interface Fee {
    */
   id: number;
   /**
-   *  int32
    *
-   * @serverType integer
+   *
+   * @serverType string
    */
-  studentType: number;
+  studentType: string;
   /**
-   *  int32
    *
-   * @serverType integer
+   *
+   * @serverType string
    */
-  name: number;
+  name: string;
   /**
    *  int32
    *
@@ -470,6 +487,30 @@ export interface Payment {
    * @serverType integer
    */
   studentId: number;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  total: number;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  waiver: number;
+  /**
+   *
+   *
+   * @serverType string
+   */
+  mark: string;
+  /**
+   *
+   *
+   * @serverType boolean
+   */
+  isGreenChannel: boolean;
 }
 /*
  * @namespace models
@@ -530,17 +571,23 @@ export interface Student {
    */
   majorCode: string;
   /**
+   *
+   *
+   * @serverType string
+   */
+  class: string;
+  /**
    *  int32
    *
    * @serverType integer
    */
   year: number;
   /**
-   *  int32
    *
-   * @serverType integer
+   *
+   * @serverType string
    */
-  type: number;
+  type: string;
   /**
    *
    *
@@ -625,6 +672,35 @@ export interface Student {
    * @serverType integer
    */
   isCome: number;
+  /**
+   *  int64
+   *
+   * @serverType integer
+   */
+  time: number;
+}
+/*
+ * @namespace models
+ */
+export interface Statistics {
+  /**
+   *
+   *
+   * @serverType string
+   */
+  name: string;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  count: number;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  type: number;
 }
 /*
  * @namespace models
@@ -673,7 +749,7 @@ export interface User {
    */
   studentId: number;
 }
-export interface DataResponse<T> extends CommonResp {
+export interface DataResponse<T> extends RestfulData {
   data?: T;
 }
 

@@ -41,6 +41,7 @@ const router: Router = new Router({
         {
           path: "/checkin/admission-info",
           name: "admission-info",
+          meta: { title: "录取信息" },
           component: () => import("./views/admission-info/index.vue")
         }
       ]

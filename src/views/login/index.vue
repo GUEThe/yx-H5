@@ -32,8 +32,8 @@ import { SigninForm, TokenObj } from "@/api/models";
 @Component({})
 export default class Login extends Vue {
   signinForm: SigninForm = {
-    password: "",
-    username: ""
+    password: "452623199602283612",
+    username: "何建钦"
   };
   mounted() {}
   login() {
