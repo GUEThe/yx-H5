@@ -10,7 +10,6 @@
         <van-cell title="性别"
           value="男" />
       </van-col>
-
     </van-row>
 
     <van-cell title="考生号"

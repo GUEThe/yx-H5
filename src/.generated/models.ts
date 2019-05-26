@@ -288,6 +288,12 @@ export interface GreenChannel {
    * @serverType string
    */
   opinion: string;
+  /**
+   *  int64
+   *
+   * @serverType integer
+   */
+  year: number;
 }
 /*
  * @namespace models
@@ -382,6 +388,12 @@ export interface Leave {
    * @serverType integer
    */
   handleTime: number;
+  /**
+   *  int64
+   *
+   * @serverType integer
+   */
+  year: number;
 }
 /*
  * @namespace models
@@ -743,11 +755,11 @@ export interface User {
    */
   collegeCode: string;
   /**
-   *  int32
    *
-   * @serverType integer
+   *
+   * @serverType string
    */
-  studentId: number;
+  studentId: string;
 }
 export interface DataResponse<T> extends RestfulData {
   data?: T;

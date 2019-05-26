@@ -28,7 +28,7 @@ export const wssBaseUrl = `wss://${apiHost}${basePath}/ws`;
 */
 
 /**
- * 登陆获取token
+ * 登陆获取token测试
  * @param signinForm m.SigninForm
  */
 export function Sigin(options: {
@@ -1447,13 +1447,17 @@ export function DeletePayment(options: {
 */
 
 /**
- * 获取学生信息列表
- * @param page number integer
- * @param pageSize number integer
+ * 获取学生信息列表(role为admin获取全部，college获取本学院)
+ * @param page number integer 当前页
+ * @param pageSize number integer 页大小
+ * @param collegeCode string string 学院代码(可选,role为college时无效)
+ * @param majorCode string string 专业代码（可选，优先级高于学院代码，有collegeCode不起作用)
  */
 export function GetStudentList(options: {
   page?: number;
   pageSize?: number;
+  collegeCode?: string;
+  majorCode?: string;
 }): Promise<m.PageResponse<m.Student[]>> {
   const opts: ApiRequestOptions = {
     url: `/api/Student`,
@@ -1465,7 +1469,9 @@ export function GetStudentList(options: {
 
   opts.params = {
     page: options.page,
-    pageSize: options.pageSize
+    pageSize: options.pageSize,
+    collegeCode: options.collegeCode,
+    majorCode: options.majorCode
   };
 
   return apiSendAsync<m.PageResponse<m.Student[]>>(opts);
@@ -1500,13 +1506,13 @@ export function PostStudent(options: {
 
 /**
  * 获取学生（admin可以获得任意学生，student只能获取自己）
- * @param id number integer
+ * @param studentId number integer 学号
  */
 export function GetStudent(options: {
-  id: number;
+  studentId: number;
 }): Promise<m.DataResponse<m.Student>> {
   const opts: ApiRequestOptions = {
-    url: `/api/Student/${options.id}`,
+    url: `/api/Student/${options.studentId}`,
     method: "get",
     reqName: "GetStudent"
   };

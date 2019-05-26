@@ -11,9 +11,9 @@
       left-icon="volume-o" />
 
     <van-panel class="panel"
-      title="报道须知"
+      title="系统使用须知"
       desc="请熟读以下须知"
-      status="未报到">
+      status="未报道">
       <div class="panelContent">
         <ul>
           <li>

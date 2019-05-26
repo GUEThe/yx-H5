@@ -24,14 +24,14 @@
         <van-col span="8">
           <van-button type="primary"
             @click="done"
-            v-show="activeSteps===11"
+            v-show="activeSteps===routerList.length-1"
             style="width:100%"
             size="small">完成</van-button>
         </van-col>
         <van-col span="8">
           <van-button type="info"
             @click="nextStep"
-            v-show="activeSteps!=11"
+            v-show="activeSteps!==routerList.length-1"
             style="width:100%"
             size="small">下一步</van-button>
         </van-col>
@@ -41,38 +41,29 @@
       position="left">
       <van-steps direction="vertical"
         :active="activeSteps">
-        <van-step>报道须知</van-step>
-        <van-step>入学教育</van-step>
-        <van-step>
-          <van-button type="default"
-            size="mini">录取信息</van-button>
-        </van-step>
-        <van-step>上传照片</van-step>
-        <van-step>个人信息</van-step>
-        <van-step>宿舍信息</van-step>
-        <van-step>财务信息</van-step>
-        <van-step>绿色通道</van-step>
-        <van-step>网上缴费</van-step>
-        <van-step>乘车信息</van-step>
-        <van-step>请假申请</van-step>
-        <van-step>保留资格</van-step>
+        <van-step v-for="(item,index) in routerList"
+          :key="index"><span @click="navToIndex(index)">{{item.title}}</span></van-step>
       </van-steps>
     </van-popup>
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
+import { RouterOptions } from "vue-router";
 @Component({})
 export default class Layout extends Vue {
   showBars = true;
-  title = "";
   activeSteps = 0;
   routerList = [
+    { path: "/checkin/admission-info", title: "报道须知" },
+    { path: "/checkin/admission-info", title: "入学教育" },
     { path: "/checkin/admission-info", title: "录取信息" },
-    { path: "/checkin/admission-info", title: "录取信息" },
-    { path: "/checkin/admission-info", title: "录取信息" },
-    { path: "/checkin/admission-info", title: "录取信息" },
-    { path: "/checkin/admission-info", title: "录取信息" }
+    { path: "/checkin/admission-info", title: "个人信息" },
+    { path: "/checkin/admission-info", title: "上传照片" },
+    { path: "/checkin/admission-info", title: "报道登记" },
+    { path: "/checkin/admission-info", title: "宿舍信息" },
+    { path: "/checkin/admission-info", title: "财务信息" },
+    { path: "/checkin/admission-info", title: "请假申请" }
   ];
   mounted() {
     setTimeout(() => {
@@ -82,12 +73,24 @@ export default class Layout extends Vue {
   back() {
     this.$router.push("/welcome");
   }
+  navTo() {
+    this.$router.push(this.routerList[this.activeSteps].path);
+  }
+  get title() {
+    return this.routerList[this.activeSteps].title;
+  }
+  navToIndex(index: number) {
+    this.activeSteps = index;
+    this.showBars = false;
+    this.navTo();
+  }
   nextStep() {
     this.activeSteps++;
-    this.$router.push(this.routerList[this.activeSteps].path);
+    this.navTo();
   }
   lastStep() {
     this.activeSteps--;
+    this.navTo();
   }
   done() {}
 }
