@@ -1477,6 +1477,28 @@ export function GetStudentList(options: {
   return apiSendAsync<m.PageResponse<m.Student[]>>(opts);
 }
 /*
+    export interface m.DataResponse&lt;m.RestfulData&gt; extends m.RestfulData{
+      data?: m.RestfulData;
+    }
+*/
+
+/**
+ * 更新学生信息
+ * @param value m.Student  学生对象
+ */
+export function PutStudent(options: {
+  value?: m.Student;
+}): Promise<m.DataResponse<m.RestfulData>> {
+  const opts: ApiRequestOptions = {
+    url: `/api/Student`,
+    method: "put",
+    reqName: "PutStudent"
+  };
+
+  opts.data = options.value;
+  return apiSendAsync<m.DataResponse<m.RestfulData>>(opts);
+}
+/*
     export interface m.DataResponse&lt;m.Student&gt; extends m.RestfulData{
       data?: m.Student;
     }
@@ -1518,30 +1540,6 @@ export function GetStudent(options: {
   };
 
   return apiSendAsync<m.DataResponse<m.Student>>(opts);
-}
-/*
-    export interface m.DataResponse&lt;m.RestfulData&gt; extends m.RestfulData{
-      data?: m.RestfulData;
-    }
-*/
-
-/**
- * 更新学生信息
- * @param id number integer
- * @param value m.Student
- */
-export function PutStudent(options: {
-  id: number;
-  value?: m.Student;
-}): Promise<m.DataResponse<m.RestfulData>> {
-  const opts: ApiRequestOptions = {
-    url: `/api/Student/${options.id}`,
-    method: "put",
-    reqName: "PutStudent"
-  };
-
-  opts.data = options.value;
-  return apiSendAsync<m.DataResponse<m.RestfulData>>(opts);
 }
 /*
     export interface m.DataResponse&lt;m.RestfulData&gt; extends m.RestfulData{

@@ -57,7 +57,7 @@ export default class Welcome extends Vue {
     this.getStudent();
   }
   getStudent() {
-    GetStudent({ id: 0 }).then(res => {
+    GetStudent({ studentId: 111 }).then(res => {
       this.student = res.data!;
     });
   }

@@ -43,6 +43,12 @@ const router: Router = new Router({
           name: "admission-info",
           meta: { title: "录取信息" },
           component: () => import("./views/admission-info/index.vue")
+        },
+        {
+          path: "/checkin/student-info",
+          name: "student-info",
+          meta: { title: "个人信息" },
+          component: () => import("./views/student-info/index.vue")
         }
       ]
     },

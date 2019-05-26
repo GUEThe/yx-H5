@@ -58,7 +58,7 @@ export default class Layout extends Vue {
     { path: "/checkin/admission-info", title: "报道须知" },
     { path: "/checkin/admission-info", title: "入学教育" },
     { path: "/checkin/admission-info", title: "录取信息" },
-    { path: "/checkin/admission-info", title: "个人信息" },
+    { path: "/checkin/student-info", title: "个人信息" },
     { path: "/checkin/admission-info", title: "上传照片" },
     { path: "/checkin/admission-info", title: "报道登记" },
     { path: "/checkin/admission-info", title: "宿舍信息" },

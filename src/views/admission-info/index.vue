@@ -1,5 +1,7 @@
 <template>
-  <div class="app-container">
+  <div v-if="student"
+    class="app-container">
+
     <van-row>
       <van-col span="12">
         <van-cell value-class="cellValue"
@@ -14,24 +16,32 @@
 
     <van-cell title="考生号"
       value-class="cellValue"
-      value="18450902255233" />
+      :value="student.examineeNo" />
     <van-cell title="身份证号"
       value-class="cellValue"
-      value="452623199602283612" />
+      :value="student.idCardNo" />
     <van-cell title="录取学院"
       value-class="cellValue"
-      value="计算机与信息安全学院" />
+      :value="student.collegeCode" />
     <van-cell title="录取专业"
       value-class="cellValue"
-      value="网络工程专业" />
+      :value="student.majorCode" />
 
   </div>
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { GetStudent } from "@/api";
+import { Student } from "@/api/models";
 @Component({})
 export default class Index extends Vue {
-  mounted() {}
+  student: Student | null = null;
+
+  mounted() {
+    GetStudent({ studentId: 111 }).then(resp => {
+      this.student = resp.data!;
+    });
+  }
 }
 </script>
 <style lang="less" scoped>
