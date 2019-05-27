@@ -49,6 +49,12 @@ const router: Router = new Router({
           name: "student-info",
           meta: { title: "个人信息" },
           component: () => import("./views/student-info/index.vue")
+        },
+        {
+          path: "/checkin/registration",
+          name: "registration",
+          meta: { title: "报道登记" },
+          component: () => import("./views/registration/index.vue")
         }
       ]
     },

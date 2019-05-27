@@ -11,11 +11,12 @@
     "gen_api": "ts-node   --project scripts/tsconfig.json scripts/gen_api.ts"
   },
   "dependencies": {
+    "@treacherous/core": "^0.17.7",
     "@types/nunjucks": "^3.1.1",
     "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "moment": "^2.24.0",
-    "vant": "^1.6.17",
+    "vant": "^2.0.0-beta.1",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0",

@@ -6,11 +6,11 @@
       <van-col span="12">
         <van-cell value-class="cellValue"
           title="姓名"
-          value="何建钦" />
+          :value="student.name" />
       </van-col>
       <van-col span="12">
         <van-cell title="性别"
-          value="男" />
+          :value="student.gender" />
       </van-col>
     </van-row>
 
