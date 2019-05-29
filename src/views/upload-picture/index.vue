@@ -5,8 +5,9 @@
       justify="center">
       <van-col>
         <van-uploader :max-size="maxSize"
-          :after-read="onRead"
-          @oversize="overSize">
+          @oversize="overSize"
+          accept="image/jpg, image/jpeg,image/png"
+          :after-read="onRead">
           <div class="uploader">
             <van-icon size="70px"
               name="photograph" />点击上传</div>
@@ -18,7 +19,6 @@
       <van-cell>
         <div class="uploader">
           <van-image lazy-load
-            accept="image/jpg, image/jpeg,image/png"
             :src="`/v1/${student.picture}`">
             <template v-slot:loading>
               <van-loading type="spinner"

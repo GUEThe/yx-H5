@@ -38,8 +38,8 @@
         clearable
         label="通讯地址"
         placeholder="生源地贷款管理部门通讯地址" />
+      <input type="file" />
     </van-cell-group>
-
   </div>
 </template>
 <script lang="ts">
@@ -47,13 +47,16 @@ import { Component, Vue, Watch } from "vue-property-decorator";
 import { GetStudent, PutStudent } from "@/api";
 import { Student } from "@/api/models";
 import moment from "moment";
+
 import {
   createRuleset,
   createGroup,
   IValidationGroup,
   Ruleset
 } from "@treacherous/core";
-@Component({})
+@Component({
+  components: {}
+})
 export default class Index extends Vue {}
 </script>
 <style lang="less" scoped>

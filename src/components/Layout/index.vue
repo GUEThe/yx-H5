@@ -64,7 +64,7 @@ export default class Layout extends Vue {
     { path: "/checkin/admission-info", title: "宿舍信息" },
     { path: "/checkin/green-channel", title: "绿色通道" },
     { path: "/checkin/admission-info", title: "财务信息" },
-    { path: "/checkin/admission-info", title: "请假申请" }
+    { path: "/checkin/leave", title: "请假申请" }
   ];
   mounted() {
     setTimeout(() => {

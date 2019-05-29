@@ -67,6 +67,12 @@ const router: Router = new Router({
           name: "green-channel",
           meta: { title: "绿色通道" },
           component: () => import("./views/green-channel/index.vue")
+        },
+        {
+          path: "/checkin/leave",
+          name: "leave",
+          meta: { title: "请假申请" },
+          component: () => import("./views/leave/index.vue")
         }
       ]
     },
