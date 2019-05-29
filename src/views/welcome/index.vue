@@ -28,11 +28,6 @@
           </li>
         </ul>
       </div>
-      <!-- <div slot="footer"
-        class="panelFooter">
-        <van-button type="primary"
-          size="small">开始报道</van-button>
-      </div> -->
     </van-panel>
     <van-row type="flex"
       class="buttonRow"

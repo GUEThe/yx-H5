@@ -17,6 +17,7 @@
             v-model="signinForm.username"
             placeholder="请输入名字" />
           <van-button size="large"
+            :loading="loading"
             @click="login"
             type="info">登 录</van-button>
         </van-cell-group>
@@ -35,6 +36,7 @@ export default class Login extends Vue {
     password: "452623199602283612",
     username: "何建钦"
   };
+  loading = false;
   mounted() {}
   login() {
     if (this.signinForm.password === "") {
@@ -45,11 +47,17 @@ export default class Login extends Vue {
       Toast.fail("名字不能为空");
       return;
     }
-    Sigin({ signinForm: this.signinForm }).then(res => {
-      const tokenObj: TokenObj = res.data!;
-      localStorage.setItem("token", tokenObj.token);
-      this.$router.push("/welcome");
-    });
+    this.loading = true;
+    Sigin({ signinForm: this.signinForm })
+      .then(res => {
+        const tokenObj: TokenObj = res.data!;
+        localStorage.setItem("token", tokenObj.token);
+        this.loading = false;
+        this.$router.push("/welcome");
+      })
+      .catch(reason => {
+        this.loading = false;
+      });
   }
 }
 </script>

@@ -55,6 +55,12 @@ const router: Router = new Router({
           name: "registration",
           meta: { title: "报道登记" },
           component: () => import("./views/registration/index.vue")
+        },
+        {
+          path: "/checkin/upload-picture",
+          name: "upload-picture",
+          meta: { title: "上传照片" },
+          component: () => import("./views/upload-picture/index.vue")
         }
       ]
     },

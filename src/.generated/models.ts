@@ -613,11 +613,11 @@ export interface Student {
    */
   shoesSize: string;
   /**
-   *  int32
    *
-   * @serverType integer
+   *
+   * @serverType string
    */
-  picture: number;
+  picture: string;
   /**
    *
    *
