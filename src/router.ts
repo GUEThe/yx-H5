@@ -61,6 +61,12 @@ const router: Router = new Router({
           name: "upload-picture",
           meta: { title: "上传照片" },
           component: () => import("./views/upload-picture/index.vue")
+        },
+        {
+          path: "/checkin/green-channel",
+          name: "green-channel",
+          meta: { title: "绿色通道" },
+          component: () => import("./views/green-channel/index.vue")
         }
       ]
     },
