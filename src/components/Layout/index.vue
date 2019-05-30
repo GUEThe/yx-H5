@@ -55,7 +55,7 @@ export default class Layout extends Vue {
   showBars = true;
   activeSteps = 0;
   routerList = [
-    { path: "/checkin/admission-info", title: "报道须知" },
+    { path: "/checkin/show-html", title: "报道须知" },
     { path: "/checkin/admission-info", title: "入学教育" },
     { path: "/checkin/admission-info", title: "录取信息" },
     { path: "/checkin/student-info", title: "个人信息" },
@@ -70,6 +70,12 @@ export default class Layout extends Vue {
     setTimeout(() => {
       this.showBars = false;
     }, 1500);
+    this.routerList.forEach((item, index) => {
+      if (item.path == this.$route.path) {
+        this.activeSteps = index;
+        return;
+      }
+    });
   }
   back() {
     this.$router.push("/welcome");

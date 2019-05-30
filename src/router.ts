@@ -31,7 +31,7 @@ const router: Router = new Router({
       path: "/checkin",
       name: "checkin",
       component: Layout,
-      redirect: "/checkin/test",
+      redirect: "/checkin/show-html",
       children: [
         {
           path: "/checkin/test",
@@ -73,6 +73,12 @@ const router: Router = new Router({
           name: "leave",
           meta: { title: "请假申请" },
           component: () => import("./views/leave/index.vue")
+        },
+        {
+          path: "/checkin/show-html",
+          name: "show-html",
+          meta: { title: "展示富文本" },
+          component: () => import("./views/show-html/index.vue")
         }
       ]
     },
@@ -95,6 +101,10 @@ router.beforeEach((to: Route, form: Route, next: Function) => {
     next("/login");
   }
   next();
+});
+
+router.afterEach(() => {
+  window.scrollTo(0, 0);
 });
 
 export default router;
