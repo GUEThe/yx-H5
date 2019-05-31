@@ -562,7 +562,7 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.4.4":
+"@babel/runtime@^7.4.5":
   version "7.4.5"
   resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.4.5.tgz#582bb531f5f9dc67d2fcb682979894f75e253f12"
   integrity sha1-WCu1MfX53GfS/LaCl5iU914lPxI=
@@ -7336,12 +7336,12 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vant@^2.0.0-beta.1:
-  version "2.0.0-beta.1"
-  resolved "https://registry.npm.taobao.org/vant/download/vant-2.0.0-beta.1.tgz#22cf11ff2001f2c8bc51597e3f05ed7d761505ab"
-  integrity sha1-Is8R/yAB8si8UVl+PwXtfXYVBas=
+vant@^2.0.0-beta.2:
+  version "2.0.0-beta.2"
+  resolved "https://registry.npm.taobao.org/vant/download/vant-2.0.0-beta.2.tgz#e4580dd64d8efc544cbd370b08182fbda012b998"
+  integrity sha1-5FgN1k2O/FRMvTcLCBgvvaASuZg=
   dependencies:
-    "@babel/runtime" "^7.4.4"
+    "@babel/runtime" "^7.4.5"
     "@vant/icons" "1.1.7"
     "@vue/babel-helper-vue-jsx-merge-props" "^1.0.0"
     vue-lazyload "1.2.3"
@@ -7400,7 +7400,7 @@ vue-hot-reload-api@^2.3.0:
 
 vue-lazyload@1.2.3:
   version "1.2.3"
-  resolved "https://registry.npm.taobao.org/vue-lazyload/download/vue-lazyload-1.2.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-lazyload%2Fdownload%2Fvue-lazyload-1.2.3.tgz#901f9ec15c7e6ca78781a2bae4a343686bdedb2c"
+  resolved "https://registry.npm.taobao.org/vue-lazyload/download/vue-lazyload-1.2.3.tgz#901f9ec15c7e6ca78781a2bae4a343686bdedb2c"
   integrity sha1-kB+ewVx+bKeHgaK65KNDaGve2yw=
 
 vue-loader@^15.7.0:
@@ -7444,6 +7444,11 @@ vue-template-es2015-compiler@^1.9.0:
 vue@^2.6.10:
   version "2.6.10"
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
+
+vuex-module-decorators@^0.9.9:
+  version "0.9.9"
+  resolved "https://registry.npm.taobao.org/vuex-module-decorators/download/vuex-module-decorators-0.9.9.tgz#3d278531cbd41435b3cba255a6e4db8a2bb3bf5b"
+  integrity sha1-PSeFMcvUFDWzy6JVpuTbiiuzv1s=
 
 vuex@^3.0.1:
   version "3.1.0"

@@ -247,6 +247,36 @@ export interface GreenChannel {
    */
   contractNo: string;
   /**
+   *
+   *
+   * @serverType string
+   */
+  replyCode: string;
+  /**
+   *
+   *
+   * @serverType string
+   */
+  deptName: string;
+  /**
+   *
+   *
+   * @serverType string
+   */
+  contact: string;
+  /**
+   *
+   *
+   * @serverType string
+   */
+  deptAddress: string;
+  /**
+   *
+   *
+   * @serverType string
+   */
+  deptPhone: string;
+  /**
    *  int32
    *
    * @serverType integer
@@ -346,6 +376,12 @@ export interface Leave {
    * @serverType integer
    */
   id: number;
+  /**
+   *
+   *
+   * @serverType string
+   */
+  studentId: string;
   /**
    *
    *
@@ -476,6 +512,12 @@ export interface Payment {
    */
   id: number;
   /**
+   *
+   *
+   * @serverType string
+   */
+  studentId: string;
+  /**
    *  int32
    *
    * @serverType integer
@@ -493,12 +535,6 @@ export interface Payment {
    * @serverType integer
    */
   time: number;
-  /**
-   *  int32
-   *
-   * @serverType integer
-   */
-  studentId: number;
   /**
    *  int32
    *
@@ -685,6 +721,12 @@ export interface Student {
    */
   isCome: number;
   /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  status: number;
+  /**
    *  int64
    *
    * @serverType integer
@@ -713,6 +755,136 @@ export interface Statistics {
    * @serverType integer
    */
   type: number;
+}
+/*
+ * @namespace models
+ */
+export interface StudentStationView {
+  /**
+   *
+   *
+   * @serverType string
+   */
+  collegeCode: string;
+  /**
+   *
+   *
+   * @serverType string
+   */
+  majorCode: string;
+  /**
+   *
+   *
+   * @serverType string
+   */
+  name: string;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  gender: number;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  id: number;
+  /**
+   *
+   *
+   * @serverType string
+   */
+  studentId: string;
+  /**
+   *
+   *
+   * @serverType string
+   */
+  station: string;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  peopleNum: number;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  baggageNum: number;
+  /**
+   *  int64
+   *
+   * @serverType integer
+   */
+  arriveTime: number;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  isNeed: number;
+  /**
+   *  int64
+   *
+   * @serverType integer
+   */
+  year: number;
+}
+/*
+ * @namespace models
+ */
+export interface StudentStation {
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  id: number;
+  /**
+   *
+   *
+   * @serverType string
+   */
+  studentId: string;
+  /**
+   *
+   *
+   * @serverType string
+   */
+  station: string;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  peopleNum: number;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  baggageNum: number;
+  /**
+   *  int64
+   *
+   * @serverType integer
+   */
+  arriveTime: number;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  isNeed: number;
+  /**
+   *  int64
+   *
+   * @serverType integer
+   */
+  year: number;
 }
 /*
  * @namespace models

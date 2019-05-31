@@ -6,7 +6,7 @@ import {
   Mutation,
   getModule
 } from "vuex-module-decorators";
-import { Signin, GetUserInfo, Logout } from "@/api";
+import { Sigin, GetUserInfo, Logout } from "@/api";
 
 import store from "@/store";
 import { UserInfo, SigninForm } from "@/api/models";
@@ -47,7 +47,7 @@ class User extends VuexModule implements UserInfo {
   @Action
   public async Login(signinForm: SigninForm) {
     signinForm.username = signinForm.username.trim();
-    const { data } = await Signin({ signinForm });
+    const { data } = await Sigin({ signinForm });
     localStorage.setItem("token", data!.token);
     this.SET_TOKEN(data!.token);
   }
@@ -68,15 +68,13 @@ class User extends VuexModule implements UserInfo {
     if (!data) {
       throw Error("Verification failed, please Login again.");
     }
-    const { roles, name, phone, mail } = data;
+    const { roles, name } = data;
     // roles must be a non-empty array
     if (!roles || roles.length <= 0) {
       throw Error("GetUserInfo: roles must be a non-null array!");
     }
     this.SET_ROLES(roles);
     this.SET_NAME(name);
-    this.SET_PHONE(phone);
-    this.SET_MAIL(mail);
   }
 
   @Action
