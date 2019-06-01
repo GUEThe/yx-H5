@@ -71,7 +71,7 @@ export default class Welcome extends Vue {
 }
 .panelContent {
   font-size: 12px;
-  padding: 10px 28px;
+  padding: 0 28px;
 }
 .panel {
   margin-top: 10px;

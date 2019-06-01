@@ -1,10 +1,23 @@
 <template>
   <div class="app-container">
+    <van-collapse v-model="activeName"
+      accordion>
+      <van-collapse-item title="注意事项"
+        name="1">
+        <div class="panelContent">
+          <ul>
+            <li>
+              标*为必填,请如实填写；
+            </li>
+            <li>
+              重复保存可更新信息。
+            </li>
+          </ul>
+        </div>
+      </van-collapse-item>
+    </van-collapse>
     <van-cell-group v-if="student"
       style="padding: 10px 15px;">
-
-      <van-notice-bar text="标*为必填,请如实填写。重复保存可更新信息。"
-        left-icon="volume-o" />
 
       <van-cell title="出生日期"
         class="date-range van-cell--required">
@@ -139,6 +152,7 @@ import {
 } from "@treacherous/core";
 @Component({})
 export default class Index extends Vue {
+  activeName = "1";
   student: Student | null = null;
   showDatePicker = false;
   showPoliticalStatusPicker = false;
@@ -252,5 +266,12 @@ export default class Index extends Vue {
 }
 .van-field-error::placeholder {
   color: #f44;
+}
+.panelContent {
+  font-size: 12px;
+  padding: 0 28px;
+}
+.panelContent ul li {
+  list-style: decimal;
 }
 </style>

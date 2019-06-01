@@ -1,10 +1,23 @@
 <template>
   <div class="app-container">
     <div style="padding:10px 15px">
-      <van-notice-bar text="标*为必填,请如实填写。重复保存可更新信息。"
-        left-icon="volume-o" />
-      <van-cell-group v-if="studentStation"
-        title="乘车信息">
+      <van-collapse v-model="activeName"
+        accordion>
+        <van-collapse-item title="注意事项"
+          name="1">
+          <div class="panelContent">
+            <ul>
+              <li>
+                标*为必填,请如实填写；
+              </li>
+              <li>
+                重复保存可更新信息。
+              </li>
+            </ul>
+          </div>
+        </van-collapse-item>
+      </van-collapse>
+      <van-cell-group title="乘车信息">
         <van-cell title="抵达到站"
           class="date-range van-cell--required">
           <template>
@@ -118,6 +131,7 @@ import axios from "axios";
 import moment from "moment";
 @Component({})
 export default class checkIn extends Vue {
+  activeName = "1";
   showStation = false;
   station = ["桂林站（南站）", "桂林北站", "桂林西站", "两江机场"];
   showDatePicker = false;
@@ -133,7 +147,13 @@ export default class checkIn extends Vue {
   showShoesSize = false;
   shoesSize = [35, 36, 37, 38, 39, 40, 41, 42, 43];
   student: Student | null = null;
-  studentStation: StudentStation | null = null;
+  studentStation = {
+    station: "",
+    arriveTime: 0,
+    peopleNum: 0,
+    baggageNum: 0,
+    isNeed: 0
+  };
   checked = false;
 
   mounted() {
@@ -141,8 +161,11 @@ export default class checkIn extends Vue {
       this.student = resp.data!;
     });
     GetStudentStation({ studentId: 111 }).then(resp => {
-      this.studentStation! = resp.data!;
-      this.checked = this.studentStation.isNeed == 0 ? false : true;
+      if (resp.data) {
+        this.studentStation! = resp.data!;
+
+        this.checked = this.studentStation.isNeed == 0 ? false : true;
+      }
     });
   }
   confirmStation(val: string) {
@@ -187,5 +210,12 @@ export default class checkIn extends Vue {
   /deep/ .van-cell__title {
     max-width: 90px;
   }
+}
+.panelContent {
+  font-size: 12px;
+  padding: 0 28px;
+}
+.panelContent ul li {
+  list-style: decimal;
 }
 </style>

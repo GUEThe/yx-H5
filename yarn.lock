@@ -7336,10 +7336,10 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vant@^2.0.0-beta.2:
-  version "2.0.0-beta.2"
-  resolved "https://registry.npm.taobao.org/vant/download/vant-2.0.0-beta.2.tgz#e4580dd64d8efc544cbd370b08182fbda012b998"
-  integrity sha1-5FgN1k2O/FRMvTcLCBgvvaASuZg=
+vant@^2.0.0-beta.3:
+  version "2.0.0-beta.3"
+  resolved "https://registry.npm.taobao.org/vant/download/vant-2.0.0-beta.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvant%2Fdownload%2Fvant-2.0.0-beta.3.tgz#25e9c4844cebeb2352315ee91f797c4d768c675f"
+  integrity sha1-JenEhEzr6yNSMV7pH3l8TXaMZ18=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@vant/icons" "1.1.7"

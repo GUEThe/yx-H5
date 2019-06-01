@@ -12,6 +12,7 @@ export const enum ReqNames {
   PostBed = "PostBed",
   GetBedItem = "GetBedItem",
   DeleteBed = "DeleteBed",
+  GetStudentBed = "GetStudentBed",
   GetCampusList = "GetCampusList",
   PutCampus = "PutCampus",
   PostCampus = "PostCampus",

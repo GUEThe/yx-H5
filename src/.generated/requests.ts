@@ -203,6 +203,27 @@ export function DeleteBed(options: {
   return apiSendAsync<m.DataResponse<m.RestfulData>>(opts);
 }
 /*
+    export interface m.DataResponse&lt;m.StudentBedView&gt; extends m.RestfulData{
+      data?: m.StudentBedView;
+    }
+*/
+
+/**
+ *
+ * @param studentId number integer
+ */
+export function GetStudentBed(options: {
+  studentId: number;
+}): Promise<m.DataResponse<m.StudentBedView>> {
+  const opts: ApiRequestOptions = {
+    url: `/api/Bed/studentbed/${options.studentId}`,
+    method: "get",
+    reqName: "GetStudentBed"
+  };
+
+  return apiSendAsync<m.DataResponse<m.StudentBedView>>(opts);
+}
+/*
     export interface m.PageResponse&lt;m.Campus[]&gt; extends m.RestfulData{
       data?: m.Campus[];
       total: number;
@@ -700,7 +721,7 @@ export function PutGreenChannel(options: {
 */
 
 /**
- * 新增绿色通道项
+ * 新增(保存)绿色通道项
  * @param model m.GreenChannel
  */
 export function PostGreenChannel(options: {
@@ -1450,12 +1471,14 @@ export function DeletePayment(options: {
  * @param pageSize number integer 页大小
  * @param collegeCode string string 学院代码(可选,role为college时无效)
  * @param majorCode string string 专业代码（可选，优先级高于学院代码，有collegeCode不起作用)
+ * @param year number integer 年份，默认当年
  */
 export function GetStudentList(options: {
   page?: number;
   pageSize?: number;
   collegeCode?: string;
   majorCode?: string;
+  year?: number;
 }): Promise<m.PageResponse<m.Student[]>> {
   const opts: ApiRequestOptions = {
     url: `/api/Student`,
@@ -1469,7 +1492,8 @@ export function GetStudentList(options: {
     page: options.page,
     pageSize: options.pageSize,
     collegeCode: options.collegeCode,
-    majorCode: options.majorCode
+    majorCode: options.majorCode,
+    year: options.year
   };
 
   return apiSendAsync<m.PageResponse<m.Student[]>>(opts);

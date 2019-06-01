@@ -1,6 +1,26 @@
 <template>
   <div class="app-container">
+    <van-collapse v-model="activeName"
+      accordion>
+      <van-collapse-item title="注意事项"
+        name="1">
+        <div class="panelContent">
+          <ul>
+            <li>
+              上传电子版照片为本人近期免冠正面证件照，格式为jpg/jpeg/png，大小为150KB以下，照片长宽比为1.2-1.5；
+            </li>
+            <li>
+              上传照片规格：红底(R:255 G:0 B:0)、蓝底(R:67 G:142 B:219)或白底(R:255 G:255 B:255)彩色标准证件照片；
+            </li>
 
+            <li>该照片用于校园一卡通、学籍办理，勿使用手机拍照或其他生活、艺术照，如照片不符合要求，入学后需要补交；</li>
+            <li>
+              重复上传可覆盖。
+            </li>
+          </ul>
+        </div>
+      </van-collapse-item>
+    </van-collapse>
     <van-row type="flex"
       justify="center">
       <van-col>
@@ -34,24 +54,6 @@
       </van-cell>
 
     </van-row>
-    <van-panel class="panel"
-      title="注意事项">
-      <div class="panelContent">
-        <ul>
-          <li>
-            上传电子版照片为本人近期免冠正面证件照，格式为jpg/jpeg/png，大小为150KB以下，照片长宽比为1.2-1.5；
-          </li>
-          <li>
-            上传照片规格：红底(R:255 G:0 B:0)、蓝底(R:67 G:142 B:219)或白底(R:255 G:255 B:255)彩色标准证件照片；
-          </li>
-
-          <li>该照片用于校园一卡通、学籍办理，勿使用手机拍照或其他生活、艺术照，如照片不符合要求，入学后需要补交；</li>
-          <li>
-            重复上传可覆盖。
-          </li>
-        </ul>
-      </div>
-    </van-panel>
   </div>
 </template>
 <script lang="ts">
@@ -62,6 +64,7 @@ import { apiSendAsync, ApiRequestOptions } from "@/utils/apiRequest";
 import analyze from "rgbaster";
 @Component({})
 export default class Index extends Vue {
+  activeName = "1";
   student: Student | null = null;
   maxSize = 153600;
   colorArr = ["rgb(255,0,0)", "rgb(67,142,219)", "rgb(255,255,255)"];
@@ -135,7 +138,7 @@ export default class Index extends Vue {
 }
 .panelContent {
   font-size: 12px;
-  padding: 10px 28px;
+  padding: 0 28px;
 }
 .panelContent ul li {
   list-style: decimal;

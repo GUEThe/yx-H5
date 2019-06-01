@@ -146,6 +146,41 @@ export interface Bed {
 /*
  * @namespace models
  */
+export interface StudentBedView {
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  id: number;
+  /**
+   *
+   *
+   * @serverType string
+   */
+  studentId: string;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  bedId: number;
+  /**
+   *  int64
+   *
+   * @serverType integer
+   */
+  pickTime: number;
+  /**
+   *  int32
+   *
+   * @serverType integer
+   */
+  status: number;
+}
+/*
+ * @namespace models
+ */
 export interface Campus {
   /**
    *  int32
@@ -235,11 +270,11 @@ export interface GreenChannel {
    */
   id: number;
   /**
-   *  int32
    *
-   * @serverType integer
+   *
+   * @serverType string
    */
-  studentId: number;
+  studentId: string;
   /**
    *
    *
