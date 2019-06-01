@@ -786,10 +786,10 @@ export function DeleteGreenChannel(options: {
 
 /**
  * 根据学生ID获取绿色通道记录
- * @param studenId number integer
+ * @param studentId number integer
  */
 export function GetGreenChannelByStudentId(options: {
-  studenId?: number;
+  studentId?: number;
 }): Promise<m.DataResponse<m.GreenChannel>> {
   const opts: ApiRequestOptions = {
     url: `/api/GreenChannel/student`,
@@ -798,7 +798,7 @@ export function GetGreenChannelByStudentId(options: {
   };
 
   opts.params = {
-    studenId: options.studenId
+    studentId: options.studentId
   };
 
   return apiSendAsync<m.DataResponse<m.GreenChannel>>(opts);

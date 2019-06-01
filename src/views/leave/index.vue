@@ -1,9 +1,22 @@
 <template>
   <div class="app-container">
     <div style="padding:10px 15px">
-      <van-notice-bar text="标*为必填,请如实填写。重复保存可更新信息。"
-        left-icon="volume-o" />
-      <van-cell-group title="乘车信息">
+      <van-collapse v-model="activeName"
+        accordion>
+        <van-collapse-item title="注意事项"
+          name="1">
+          <div class="panelContent">
+            <ul>
+              <li>无需请假可跳过；</li>
+              <li>标*为必填项，请如实填写；</li>
+              <li>
+                如若审核失败可做更改之后保存，即可重新申请。
+              </li>
+            </ul>
+          </div>
+        </van-collapse-item>
+      </van-collapse>
+      <van-cell-group>
         <van-cell title="请假类型"
           class="date-range van-cell--required">
           <template>
@@ -14,6 +27,7 @@
           </template>
         </van-cell>
         <van-cell title="延期到达时间"
+          v-if="leave.type=='普通请假'"
           class="date-range van-cell--required">
           <template>
             <input readonly
@@ -24,6 +38,7 @@
         </van-cell>
 
         <van-cell title="延期年份"
+          v-if="leave.type=='申请保留学籍'"
           class="date-range van-cell--required">
           <template>
             <input readonly
@@ -51,7 +66,7 @@
       position="bottom">
       <van-picker show-toolbar
         @cancel="showLeaveType=false"
-        @confirm="confirmStation"
+        @confirm="confirmLeaveType"
         :columns="leaveType" />
     </van-popup>
 
@@ -66,6 +81,7 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { Leave } from "@/api/models";
 
 @Component({})
 export default class checkIn extends Vue {
@@ -74,7 +90,13 @@ export default class checkIn extends Vue {
   showDatePicker = false;
   showYearPicker = false;
   minDate = new Date();
-
+  activeName = "1";
+  leave = {
+    type: "",
+    arrivalTime: 0,
+    leaveYear: 0,
+    reason: ""
+  };
   get maxDate() {
     var d = new Date();
     d.setMonth(d.getMonth() + 2);
@@ -88,13 +110,15 @@ export default class checkIn extends Vue {
     return yearCol;
   }
   mounted() {}
-  confirmStation() {
+  confirmLeaveType() {
     this.showLeaveType = false;
   }
   confirmDate() {
     this.showDatePicker = false;
   }
-  confirmYear() {}
+  confirmYear() {
+    this.showYearPicker = false;
+  }
   submitStudent() {}
 }
 </script>
@@ -103,5 +127,12 @@ export default class checkIn extends Vue {
   /deep/ .van-cell__title {
     max-width: 90px;
   }
+}
+.panelContent {
+  font-size: 12px;
+  padding: 0 28px;
+}
+.panelContent ul li {
+  list-style: decimal;
 }
 </style>
