@@ -12,8 +12,10 @@
         <van-cell-group>
           <van-field required
             v-model="signinForm.password"
+            clearable
             placeholder="请输入身份证号" />
           <van-field required
+            clearable
             v-model="signinForm.username"
             placeholder="请输入名字" />
           <van-button size="large"
@@ -28,7 +30,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Toast } from "vant";
-import { Sigin } from "@/api";
+import { Sigin, GetCollegeList, GetMajorList, GetCampusList } from "@/api";
 import { SigninForm, TokenObj } from "@/api/models";
 @Component({})
 export default class Login extends Vue {
@@ -37,7 +39,17 @@ export default class Login extends Vue {
     username: "何建钦"
   };
   loading = false;
-  mounted() {}
+  mounted() {
+    GetCollegeList({ page: 1, pageSize: 100 }).then(resp => {
+      localStorage.setItem("college", JSON.stringify(resp.data!));
+    });
+    GetMajorList({ page: 1, pageSize: 100 }).then(resp => {
+      localStorage.setItem("major", JSON.stringify(resp.data!));
+    });
+    GetCampusList({ page: 1, pageSize: 100 }).then(resp => {
+      localStorage.setItem("campus", JSON.stringify(resp.data!));
+    });
+  }
   login() {
     if (this.signinForm.password === "") {
       Toast.fail("身份证不能为空");

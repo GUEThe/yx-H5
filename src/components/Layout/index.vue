@@ -42,7 +42,8 @@
       <van-steps direction="vertical"
         :active="activeSteps">
         <van-step v-for="(item,index) in routerList"
-          :key="index"><span @click="navToIndex(index)">{{item.title}}</span></van-step>
+          :key="index"><span :class="{mRequired:item.required}"
+            @click="navToIndex(index)">{{item.title}}</span></van-step>
       </van-steps>
     </van-popup>
   </div>
@@ -50,21 +51,22 @@
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
 import { RouterOptions } from "vue-router";
+import { eventBus } from "@/utils/eventBus";
 @Component({})
 export default class Layout extends Vue {
   showBars = true;
   activeSteps = 0;
   routerList = [
-    { path: "/checkin/show-html", title: "报道须知" },
-    { path: "/checkin/admission-info", title: "入学教育" },
-    { path: "/checkin/admission-info", title: "录取信息" },
-    { path: "/checkin/student-info", title: "个人信息" },
-    { path: "/checkin/upload-picture", title: "上传照片" },
-    { path: "/checkin/registration", title: "报道登记" },
-    { path: "/checkin/admission-info", title: "宿舍信息" },
-    { path: "/checkin/green-channel", title: "绿色通道" },
-    { path: "/checkin/admission-info", title: "财务信息" },
-    { path: "/checkin/leave", title: "请假申请" }
+    { path: "/checkin/show-html", title: "报道须知", required: false },
+    // { path: "/checkin/admission-info", title: "入学教育" },
+    { path: "/checkin/admission-info", title: "录取信息", required: false },
+    { path: "/checkin/student-info", title: "个人信息", required: true },
+    { path: "/checkin/upload-picture", title: "上传照片", required: true },
+    { path: "/checkin/registration", title: "报道登记", required: true },
+    { path: "/checkin/room-info", title: "宿舍信息", required: false },
+    { path: "/checkin/green-channel", title: "绿色通道", required: false },
+    { path: "/checkin/admission-info", title: "财务信息", required: false },
+    { path: "/checkin/leave", title: "请假申请", required: false }
   ];
   mounted() {
     setTimeout(() => {
@@ -116,9 +118,22 @@ export default class Layout extends Vue {
   bottom: 0;
   background-color: #fff;
 }
+
+.mRequired::after {
+  position: absolute;
+
+  color: #f44;
+  font-size: 14px;
+  content: "*";
+}
 </style>
 <style lang="less">
 .van-popup--left {
   top: 300px;
+}
+
+.requiredLabel {
+  color: #f44;
+  font-size: 14px;
 }
 </style>

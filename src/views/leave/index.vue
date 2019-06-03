@@ -8,7 +8,7 @@
           <div class="panelContent">
             <ul>
               <li>无需请假可跳过；</li>
-              <li>标*为必填项，请如实填写；</li>
+              <li>标<span class="requiredLabel">*</span>为必填项，请如实填写；</li>
               <li>
                 如若审核失败可做更改之后保存，即可重新申请。
               </li>
@@ -110,7 +110,8 @@ export default class checkIn extends Vue {
     return yearCol;
   }
   mounted() {}
-  confirmLeaveType() {
+  confirmLeaveType(val: string) {
+    this.leave.type = val;
     this.showLeaveType = false;
   }
   confirmDate() {

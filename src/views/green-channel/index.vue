@@ -17,7 +17,7 @@
             <li>
               绿色通道:对被录取入学、经济困难的新生，一律先办理入学手续，然后再根据核实后的情况，分别采取不同办法予以资助；
             </li>
-            <li>标*为必填项，请如实填写；</li>
+            <li>标<span class="requiredLabel">*</span>为必填项，请如实填写；</li>
             <li>
               如若审核失败可做更改之后保存，即可重新申请。
             </li>
@@ -103,7 +103,7 @@ export default class Index extends Vue {
     fileId: 0
   };
   created() {
-    GetGreenChannelByStudentId({ studenId: 111 }).then(resp => {
+    GetGreenChannelByStudentId({ studentId: 111 }).then(resp => {
       if (resp.data) {
         this.greenChannel = resp.data!;
       }

@@ -8,7 +8,7 @@
           <div class="panelContent">
             <ul>
               <li>
-                标*为必填,请如实填写；
+                标<span class="requiredLabel">*</span>为必填,请如实填写；
               </li>
               <li>
                 重复保存可更新信息。

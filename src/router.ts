@@ -79,6 +79,12 @@ const router: Router = new Router({
           name: "show-html",
           meta: { title: "展示富文本" },
           component: () => import("./views/show-html/index.vue")
+        },
+        {
+          path: "/checkin/room-info",
+          name: "room-info",
+          meta: { title: "宿舍信息" },
+          component: () => import("./views/room-info/index.vue")
         }
       ]
     },
