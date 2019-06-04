@@ -210,10 +210,10 @@ export function DeleteBed(options: {
 
 /**
  * 获取新生床位安排
- * @param studentId number integer
+ * @param studentId string string
  */
 export function GetStudentBed(options: {
-  studentId: number;
+  studentId: string;
 }): Promise<m.DataResponse<m.StudentBedView>> {
   const opts: ApiRequestOptions = {
     url: `/api/Bed/studentbed/${options.studentId}`,
@@ -1457,6 +1457,24 @@ export function DeletePayment(options: {
   return apiSendAsync<m.DataResponse<m.RestfulData>>(opts);
 }
 /*
+    export interface m.DataResponse&lt;m.RestfulData&gt; extends m.RestfulData{
+      data?: m.RestfulData;
+    }
+*/
+
+/**
+ *
+ */
+export function GetStuatus(): Promise<m.DataResponse<m.RestfulData>> {
+  const opts: ApiRequestOptions = {
+    url: `/api/Status`,
+    method: "get",
+    reqName: "GetStuatus"
+  };
+
+  return apiSendAsync<m.DataResponse<m.RestfulData>>(opts);
+}
+/*
     export interface m.PageResponse&lt;m.Student[]&gt; extends m.RestfulData{
       data?: m.Student[];
       total: number;
@@ -1471,6 +1489,7 @@ export function DeletePayment(options: {
  * @param pageSize number integer 页大小
  * @param collegeCode string string 学院代码(可选,role为college时无效)
  * @param majorCode string string 专业代码（可选，优先级高于学院代码，有collegeCode不起作用)
+ * @param studentId string string 学号
  * @param year number integer 年份，默认当年
  */
 export function GetStudentList(options: {
@@ -1478,6 +1497,7 @@ export function GetStudentList(options: {
   pageSize?: number;
   collegeCode?: string;
   majorCode?: string;
+  studentId?: string;
   year?: number;
 }): Promise<m.PageResponse<m.Student[]>> {
   const opts: ApiRequestOptions = {
@@ -1493,6 +1513,7 @@ export function GetStudentList(options: {
     pageSize: options.pageSize,
     collegeCode: options.collegeCode,
     majorCode: options.majorCode,
+    studentId: options.studentId,
     year: options.year
   };
 

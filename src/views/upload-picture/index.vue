@@ -49,7 +49,8 @@
                 size="20" />
             </template>
           </van-image>
-          <span>审核状态</span>
+          <van-tag :type="tagType">{{student.status|statusFilter}}</van-tag>
+
         </div>
       </van-cell>
 
@@ -83,13 +84,13 @@ export default class Index extends Vue {
   async onRead(file: any) {
     const result = await analyze(window.URL.createObjectURL(file.file));
 
-    if (this.colorArr.indexOf(result[0].color) <= 0) {
-      this.$toast({
-        type: "fail",
-        message: `照片底色不正确`
-      });
-      return;
-    }
+    // if (this.colorArr.indexOf(result[0].color) <= 0) {
+    //   this.$toast({
+    //     type: "fail",
+    //     message: `照片底色不正确`
+    //   });
+    //   return;
+    // }
 
     var img = new Image();
     img.onload = () => {
@@ -119,6 +120,7 @@ export default class Index extends Vue {
             type: "success",
             message: "上传成功"
           });
+          this.student!.status = 0;
         });
       }
     };
@@ -129,6 +131,18 @@ export default class Index extends Vue {
       });
     };
     img.src = window.URL.createObjectURL(file.file);
+  }
+  get tagType() {
+    switch (this.student!.status) {
+      case 0:
+        return "";
+      case 1:
+        return "success";
+      case 2:
+        return "danger";
+      default:
+        return "";
+    }
   }
 }
 </script>

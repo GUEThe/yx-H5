@@ -52,7 +52,7 @@
           clearable
           label="原因"
           type="textarea"
-          :rows="3"
+          :rows="5"
           autosize
           placeholder="请填写原因" />
 

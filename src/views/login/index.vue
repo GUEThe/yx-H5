@@ -35,21 +35,11 @@ import { SigninForm, TokenObj } from "@/api/models";
 @Component({})
 export default class Login extends Vue {
   signinForm: SigninForm = {
-    password: "452623199602283612",
-    username: "何建钦"
+    password: "",
+    username: ""
   };
   loading = false;
-  mounted() {
-    GetCollegeList({ page: 1, pageSize: 100 }).then(resp => {
-      localStorage.setItem("college", JSON.stringify(resp.data!));
-    });
-    GetMajorList({ page: 1, pageSize: 100 }).then(resp => {
-      localStorage.setItem("major", JSON.stringify(resp.data!));
-    });
-    GetCampusList({ page: 1, pageSize: 100 }).then(resp => {
-      localStorage.setItem("campus", JSON.stringify(resp.data!));
-    });
-  }
+  mounted() {}
   login() {
     if (this.signinForm.password === "") {
       Toast.fail("身份证不能为空");

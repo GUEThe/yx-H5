@@ -27,8 +27,10 @@
     </van-collapse>
     <van-cell-group style="padding: 10px 15px;">
 
-      <van-cell title="审核状态"
-        value="未申请" />
+      <van-cell title="审核状态">
+        <van-tag v-if="greenChannel.status"
+          :type="tagType">{{greenChannel.status|mStatusFilter}}</van-tag>
+      </van-cell>
       <van-cell title="贷款金额"
         class="date-range van-cell--required">
         <template>
@@ -68,7 +70,7 @@
         label="通讯地址"
         v-model="greenChannel.deptAddress"
         placeholder="生源地贷款管理部门通讯地址" />
-      <input type="file" />
+      <!-- <input type="file" /> -->
       <van-button type="primary"
         @click="putGreenChanne"
         style="width:100%">保 存</van-button>
@@ -100,7 +102,7 @@ export default class Index extends Vue {
     contact: "",
     deptPhone: "",
     deptAddress: "",
-    fileId: 0
+    status: 1
   };
   created() {
     GetGreenChannelByStudentId({ studentId: 111 }).then(resp => {
@@ -110,6 +112,7 @@ export default class Index extends Vue {
     });
   }
   putGreenChanne() {
+    this.greenChannel.status = 1;
     PostGreenChannel({ model: this.greenChannel as GreenChannel }).then(
       resp => {
         this.$toast({
@@ -118,6 +121,18 @@ export default class Index extends Vue {
         });
       }
     );
+  }
+  get tagType() {
+    switch (this.greenChannel!.status) {
+      case 1:
+        return "";
+      case 2:
+        return "success";
+      case 3:
+        return "danger";
+      default:
+        return "";
+    }
   }
 }
 </script>

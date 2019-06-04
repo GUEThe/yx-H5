@@ -62,6 +62,7 @@ export const enum ReqNames {
   PostPayment = "PostPayment",
   GetPaymentItem = "GetPaymentItem",
   DeletePayment = "DeletePayment",
+  GetStuatus = "GetStuatus",
   GetStudentList = "GetStudentList",
   PutStudent = "PutStudent",
   PostStudent = "PostStudent",

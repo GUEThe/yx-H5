@@ -85,3 +85,25 @@ Vue.filter("mCampusFilter", (code: number) => {
   });
   return name;
 });
+
+Vue.filter("statusFilter", (status: number) => {
+  switch (status) {
+    case 0:
+      return "待审核";
+    case 1:
+      return "审核通过";
+    case 2:
+      return "审核不通过";
+  }
+});
+
+Vue.filter("mStatusFilter", (status: number) => {
+  switch (status) {
+    case 1:
+      return "待审核";
+    case 2:
+      return "审核通过";
+    case 3:
+      return "审核不通过";
+  }
+});

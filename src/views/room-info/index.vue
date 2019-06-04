@@ -47,7 +47,7 @@ export default class Index extends Vue {
   studentBedView: StudentBedView | null = null;
 
   mounted() {
-    GetStudentBed({ studentId: 111 }).then(resp => {
+    GetStudentBed({ studentId: '111' }).then(resp => {
       this.studentBedView = resp.data!;
     });
   }

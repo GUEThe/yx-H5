@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router, { Route } from "vue-router";
 import Layout from "./components/Layout/index.vue";
+import { GetCollegeList, GetMajorList, GetCampusList } from "@/api";
 
 Vue.use(Router);
 
@@ -106,6 +107,15 @@ router.beforeEach((to: Route, form: Route, next: Function) => {
   if (!localStorage.getItem("token") && to.path !== "/login") {
     next("/login");
   }
+  GetCollegeList({ page: 1, pageSize: 100 }).then(resp => {
+    localStorage.setItem("college", JSON.stringify(resp.data!));
+  });
+  GetMajorList({ page: 1, pageSize: 100 }).then(resp => {
+    localStorage.setItem("major", JSON.stringify(resp.data!));
+  });
+  GetCampusList({ page: 1, pageSize: 100 }).then(resp => {
+    localStorage.setItem("campus", JSON.stringify(resp.data!));
+  });
   next();
 });
 
