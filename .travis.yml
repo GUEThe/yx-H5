@@ -9,6 +9,6 @@ before_install:
 
 script:
   - npm run build
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo 7jb&Q..a7EmHzLJ | docker login -u ddsnake --password-stdin
   - docker build -t ddsnake/yx-h5:latest .
   - docker push ddsnake/yx-h5:latest
