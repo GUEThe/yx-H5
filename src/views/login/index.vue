@@ -5,7 +5,7 @@
       <img src="../../assets/logo-login.png"
         alt="">
     </van-row>
-    <div>test</div>
+    <div>hallo world</div>
     <van-row type="flex"
       class="form"
       justify="center">
