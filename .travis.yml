@@ -13,4 +13,3 @@ script:
   - echo "hejianqin0229" | docker login -u "ddsnake" --password-stdin
   - docker build -t ddsnake/yx-h5:latest .
   - docker push ddsnake/yx-h5:latest
-123456ip
